@@ -1,0 +1,45 @@
+How to build a CLI Gem
+
+1. Plan your gem, imagine your interface
+
+2. Start with the project structure -- google how
+  bundle gem [new_gem_name]
+  Use camel case for gem name. If you said new-gem-name, you'd get a series of nested folders ("movies" folder with an "in" folder inside it with a "chicago" folder inside that and lastly a "parks" folder in that with a "parks.rb" file inside it).
+
+3. Start with the entry point - the file run
+  try running the gem from your command line
+  troubleshoot until it works -- 
+  may need to grant file executable permissions
+    chmod +x [filename]
+
+4. force that to build the CLI interface
+  not sure what Avi means by force . . . 
+
+5. stub out the interface
+  give it fake info, but figure out how you want it to work
+
+6. start making things real
+
+7. discover objects
+
+8. program
+
+
+maybe use later to make more complicated
+  def menu
+    puts "How would you like to explore movies in the park?"
+    puts "Enter "by name" to see a list of all the movies playing in Chicago's parks by name."
+    puts "Enter "by date" to see a list of the dates on which there's a movie playing in one of Chicago's parks."
+    puts "Enter "by park" to see a list of the parks in which movies are playing."
+    puts "Once you pick, you'll get to select from the list to get further details."
+    input = gets.strip
+
+    case input
+    when "by name"
+      puts "list by name"
+    when "by date"
+      puts "list of dates"
+    when "by park"
+      puts "list of parks"
+    end
+  end
