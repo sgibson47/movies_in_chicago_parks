@@ -14,7 +14,7 @@ class CLI
   end
 
   def menu
-    puts "Enter the number of the movie for which you want details or exit to quit."
+    puts "Enter the number of the movie for which you want details, or type list to see the list again, or exit to quit."
     input = nil
 
     while input != "exit"
@@ -26,8 +26,12 @@ class CLI
         puts "more info on showing of The Birdcage."
       when "3"
         puts "more info on showing of The Princess Bride."
+      when "list"
+        list_movies
       when "exit"
         break
+      else
+        puts "Hrm, I'm not sure what you want. Please type a number from the list, list, or exit."
       end
     end
   end
