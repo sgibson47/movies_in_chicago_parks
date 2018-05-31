@@ -1,3 +1,5 @@
+require_relative '../movies_in_chicago_parks.rb'
+
 class MoviesInChicagoParks::CLI
 
   def call
