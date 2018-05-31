@@ -43,3 +43,17 @@ maybe use later to make more complicated
       puts "list of parks"
     end
   end
+
+
+What makes a showing?
+- it has a name
+- it has a date
+- it has a location/park
+- it has a time
+- it has a url
+
+now I need to make an object with these properties that I can have a collection of
+then my cli can use that collection
+
+
+
