@@ -1,6 +1,7 @@
 require 'pry'
 require_relative './showing.rb'
 require_relative './park.rb'
+require_relative './gate.rb'
 class CLI
 
   def menu
@@ -46,8 +47,7 @@ class CLI
       input = gets.strip
       if input.to_i > 0 && input.to_i <= Showing.all.length
         showing = Showing.all[input.to_i - 1]
-        puts "#{showing.name} is playing at #{showing.time}"
-        puts "on #{showing.date} in #{showing.park.name}."
+        showing.display_details
         puts "\n"
         puts "Enter another number from the list or back."
       elsif input == "back"
@@ -65,9 +65,9 @@ class CLI
 
   def list_by_date
     puts "\n"
-    
-    Showing.all.each_with_index {|showing, i|
-      puts "#{i + 1}. #{showing.date}"}
+
+    Gate.all.each_with_index {|date, i|
+      puts "#{i + 1}. #{date.month} #{date.day}, #{date.year}"}
     
     puts "\n"
     puts "Enter a number to see which movies are playing on that date,"
@@ -77,10 +77,9 @@ class CLI
 
     while input != "back"
       input = gets.strip
-      if input.to_i > 0 && input.to_i <= Showing.all.length
-        showing = Showing.all[input.to_i - 1]
-        puts "#{showing.name} is playing at #{showing.time}"
-        puts "on #{showing.date} in #{showing.park.name}."
+      if input.to_i > 0 && input.to_i <= Gate.all.length
+        date = Gate.all[input.to_i - 1]
+        date.list_showings
         puts "\n"
         puts "Enter another number from the list or back."
       elsif input == "back"
@@ -101,7 +100,7 @@ class CLI
     
     Park.all.each_with_index {|park, i|
       puts "#{i + 1}. #{park.name}"}
-    
+
     puts "\n"
     puts "Enter a number to see which movies are playing in that park,"
     puts " or enter back to return to the main menu."
@@ -112,8 +111,7 @@ class CLI
       input = gets.strip
       if input.to_i > 0 && input.to_i <= Park.all.length
         park = Park.all[input.to_i - 1]
-        park.showings.each_with_index {|showing, i|
-          puts "#{i + 1}. #{showing.name} - #{showing.date}"}
+        park.list_showings
         puts "\n"
         puts "Enter another number from the list of parks or back."
       elsif input == "back"
