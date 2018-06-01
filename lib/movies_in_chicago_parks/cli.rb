@@ -2,10 +2,6 @@ require 'pry'
 require_relative './showing.rb'
 class CLI
 
-  def call
-    menu
-  end
-
   def menu
     puts "How would you like to explore movies in the park?"
     puts "\n"
@@ -38,25 +34,26 @@ class CLI
   def list_by_name
     puts "\n"
     Showing.all.each_with_index {|showing, i|
-      puts "#{i +1}. #{showing.name}"}
+      puts "#{i + 1}. #{showing.name}"}
     puts "\n"
-    puts "Enter a number to see when and where that movie is playing."
+    puts "Enter a number to see when and where that movie is playing,"
+    puts " or enter back to return to the main menu."
 
     input = nil 
   
     while input != "back"
-      case input = gets.strip
-      when "1"
-        puts "Ferris Bueller's Day Off is playing at 6:30pm on Jun 1, 2018 in Lincoln Park."
-      when "2"
-        puts "The Birdcage is playing at 7:30pm on Jun 2, 2018 in Berger Park."
-      when "3"
-        puts "The Princess Bride is playing at 8:30pm on Jun 3, 2018 in Wicker Park."
-      when "back"
+      input = gets.strip
+      if input.to_i > 0 && input.to_i <= Showing.all.length
+        showing = Showing.all[input.to_i - 1]
+        puts "#{showing.name} is playing at #{showing.time}"
+        puts "on #{showing.date} in #{showing.park}."
+        puts "\n"
+        puts "Enter another number from the list or back."
+      elsif input == "back"
         break
       else
         puts "Hrm, I'm not sure what you want."
-        puts "Please type a number or back."
+        puts "Please type a number from the list or back."
       end
     end
 
@@ -67,25 +64,29 @@ class CLI
 
   def list_by_date
     puts "\n"
+    
     Showing.all.each_with_index {|showing, i|
-      puts "#{i +1}. #{showing.date}"}
+      puts "#{i + 1}. #{showing.date}"}
+    
     puts "\n"
-    puts "Enter a number to see which movies are playing on that date."
+    puts "Enter a number to see which movies are playing on that date,"
+    puts " or enter back to return to the main menu."
+    
     input = nil
 
     while input != "back"
-      case input = gets.strip
-      when "1"
-        puts "Ferris Bueller's Day Off is playing at 6:30pm on Jun 1, 2018 in Lincoln Park."
-      when "2"
-        puts "The Birdcage is playing at 7:30pm on Jun 2, 2018 in Berger Park."
-      when "3"
-        puts "The Princess Bride is playing at 8:30pm on Jun 3, 2018 in Wicker Park."
-      when "back"
+      input = gets.strip
+      if input.to_i > 0 && input.to_i <= Showing.all.length
+        showing = Showing.all[input.to_i - 1]
+        puts "#{showing.name} is playing at #{showing.time}"
+        puts "on #{showing.date} in #{showing.park}."
+        puts "\n"
+        puts "Enter another number from the list or back."
+      elsif input == "back"
         break
       else
         puts "Hrm, I'm not sure what you want."
-        puts "Please type a number or back."
+        puts "Please type a number from the list or back."
       end
     end
 
@@ -96,25 +97,29 @@ class CLI
 
   def list_by_park
     puts "\n"
+    
     Showing.all.each_with_index {|showing, i|
-      puts "#{i +1}. #{showing.park}"}
+      puts "#{i + 1}. #{showing.park}"}
+    
     puts "\n"
-    puts "Enter a number to see which movies are playing in that park."
+    puts "Enter a number to see which movies are playing in that park,"
+    puts " or enter back to return to the main menu."
+    
     input = nil
 
     while input != "back"
-      case input = gets.strip
-      when "1"
-        puts "Ferris Bueller's Day Off is playing at 6:30pm on Jun 1, 2018 in Lincoln Park."
-      when "2"
-        puts "The Birdcage is playing at 7:30pm on Jun 2, 2018 in Berger Park."
-      when "3"
-        puts "The Princess Bride is playing at 8:30pm on Jun 3, 2018 in Wicker Park."
-      when "back"
+      input = gets.strip
+      if input.to_i > 0 && input.to_i <= Showing.all.length
+        showing = Showing.all[input.to_i - 1]
+        puts "#{showing.name} is playing at #{showing.time}"
+        puts "on #{showing.date} in #{showing.park}."
+        puts "\n"
+        puts "Enter another number from the list or back."
+      elsif input == "back"
         break
       else
         puts "Hrm, I'm not sure what you want."
-        puts "Please type a number or back."
+        puts "Please type a number from the list or back."
       end
     end
 
