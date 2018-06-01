@@ -99,8 +99,8 @@ class CLI
   def list_by_park
     puts "\n"
     
-    Showing.all.each_with_index {|showing, i|
-      puts "#{i + 1}. #{showing.park}"}
+    Park.all.each_with_index {|park, i|
+      puts "#{i + 1}. #{park.name}"}
     
     puts "\n"
     puts "Enter a number to see which movies are playing in that park,"
@@ -110,12 +110,12 @@ class CLI
 
     while input != "back"
       input = gets.strip
-      if input.to_i > 0 && input.to_i <= Showing.all.length
-        showing = Showing.all[input.to_i - 1]
-        puts "#{showing.name} is playing at #{showing.time}"
-        puts "on #{showing.date} in #{showing.park.name}."
+      if input.to_i > 0 && input.to_i <= Park.all.length
+        park = Park.all[input.to_i - 1]
+        park.showings.each_with_index {|showing, i|
+          puts "#{i + 1}. #{showing.name} - #{showing.date}"}
         puts "\n"
-        puts "Enter another number from the list or back."
+        puts "Enter another number from the list of parks or back."
       elsif input == "back"
         break
       else

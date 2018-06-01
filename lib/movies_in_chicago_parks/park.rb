@@ -31,5 +31,9 @@ class Park
     end
   end
 
+  def add_showing(showing)
+    @showings << showing
+  end
+
 
 end
