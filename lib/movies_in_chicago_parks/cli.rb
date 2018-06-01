@@ -1,4 +1,5 @@
 require 'pry'
+require_relative './showing.rb'
 class CLI
 
   def call
@@ -36,9 +37,8 @@ class CLI
 
   def list_by_name
     puts "\n"
-    puts "1. Ferris Bueller's Day Off"
-    puts "2. The Birdcage"
-    puts "3. The Princess Bride"
+    Showing.all.each_with_index {|showing, i|
+      puts "#{i +1}. #{showing.name}"}
     puts "\n"
     puts "Enter a number to see when and where that movie is playing."
 
@@ -56,7 +56,7 @@ class CLI
         break
       else
         puts "Hrm, I'm not sure what you want."
-        puts "Please type a number 2or back."
+        puts "Please type a number or back."
       end
     end
 
@@ -67,9 +67,8 @@ class CLI
 
   def list_by_date
     puts "\n"
-    puts "1. Jun 1, 2018"
-    puts "2. Jun 2, 2018"
-    puts "3. Jun 3, 2018"
+    Showing.all.each_with_index {|showing, i|
+      puts "#{i +1}. #{showing.date}"}
     puts "\n"
     puts "Enter a number to see which movies are playing on that date."
     input = nil
@@ -97,9 +96,8 @@ class CLI
 
   def list_by_park
     puts "\n"
-    puts "1. Lincoln Park"
-    puts "2. Berger Park"
-    puts "3. Wicker Park"
+    Showing.all.each_with_index {|showing, i|
+      puts "#{i +1}. #{showing.park}"}
     puts "\n"
     puts "Enter a number to see which movies are playing in that park."
     input = nil
