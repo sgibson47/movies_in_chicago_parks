@@ -1,9 +1,11 @@
+require 'pry'
 class CLI
 
   def call
     puts "Welcome! Welcome! Welcome!"
     list_movies
     menu
+    binding.pry
   end
 
   def list_movies
@@ -11,6 +13,7 @@ class CLI
     puts "1. Ferris Bueller's Day Off"
     puts "2. The Birdcage"
     puts "3. The Princess Bride"
+
   end
 
   def menu
