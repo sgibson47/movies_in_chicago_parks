@@ -1,5 +1,6 @@
 require 'pry'
 require_relative './showing.rb'
+require_relative './park.rb'
 class CLI
 
   def menu
@@ -46,7 +47,7 @@ class CLI
       if input.to_i > 0 && input.to_i <= Showing.all.length
         showing = Showing.all[input.to_i - 1]
         puts "#{showing.name} is playing at #{showing.time}"
-        puts "on #{showing.date} in #{showing.park}."
+        puts "on #{showing.date} in #{showing.park.name}."
         puts "\n"
         puts "Enter another number from the list or back."
       elsif input == "back"
@@ -79,7 +80,7 @@ class CLI
       if input.to_i > 0 && input.to_i <= Showing.all.length
         showing = Showing.all[input.to_i - 1]
         puts "#{showing.name} is playing at #{showing.time}"
-        puts "on #{showing.date} in #{showing.park}."
+        puts "on #{showing.date} in #{showing.park.name}."
         puts "\n"
         puts "Enter another number from the list or back."
       elsif input == "back"
@@ -112,7 +113,7 @@ class CLI
       if input.to_i > 0 && input.to_i <= Showing.all.length
         showing = Showing.all[input.to_i - 1]
         puts "#{showing.name} is playing at #{showing.time}"
-        puts "on #{showing.date} in #{showing.park}."
+        puts "on #{showing.date} in #{showing.park.name}."
         puts "\n"
         puts "Enter another number from the list or back."
       elsif input == "back"
