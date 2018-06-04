@@ -34,7 +34,7 @@ class Park
 
   def list_showings
     self.showings.each_with_index {|showing, i|
-      puts "#{i + 1}. #{showing.name} - #{showing.date.month} #{showing.date.day}, #{showing.date.year}"}
+      puts "#{i + 1}. #{showing.name} - #{showing.date.month} #{showing.date.day}, #{showing.date.year}".colorize(:green)}
   end 
 
 

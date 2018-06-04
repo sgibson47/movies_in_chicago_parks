@@ -26,8 +26,8 @@ class Showing
   end
 
   def display_details
-    puts "#{@name} is playing at #{@time}"
-    puts "on #{@date.month} #{@date.day}, #{@date.year} in #{@park.name}."
+    puts "#{@name} is playing at #{@time}".colorize(:red)
+    puts "on #{@date.month} #{@date.day}, #{@date.year} in #{@park.name}.".colorize(:red)
   end 
 
 
